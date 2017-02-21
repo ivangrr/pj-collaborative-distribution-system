@@ -8,6 +8,9 @@ GET     /login                           controllers.HomeController.login
 # home page
 GET     /home                       controllers.HomeController.main
 
+# home page
+GET     /demand                       controllers.PageController.demand
+
 # An example controller showing how to use dependency injection
 #GET     /count                      controllers.CountController.count
 

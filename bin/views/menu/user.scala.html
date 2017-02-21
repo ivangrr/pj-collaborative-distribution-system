@@ -1,0 +1,21 @@
+@* user Template File *@
+@(param: Any)
+<div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+	<div class="menu_section">
+	    <h3>@Messages("menu.option.general")</h3>
+	    <ul class="nav side-menu">
+			<li>
+				<a><i class="fa fa-bed"></i>@Messages("menu.option.article")<span class="fa fa-chevron-down"></span></a>
+				<ul class="nav child_menu">
+					<li><a href="home">@Messages("menu.option.mostrar")</a></li>
+        		</ul>
+      		</li>
+      		<li>
+      			<a><i class="fa fa-edit"></i>@Messages("menu.option.demand")<span class="fa fa-chevron-down"></span></a>
+        		<ul class="nav child_menu">
+          			<li><a href="demand">@Messages("menu.option.mostrar")</a></li>
+        		</ul>
+      		</li>
+    	</ul>
+	</div>
+</div>
