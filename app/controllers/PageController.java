@@ -16,16 +16,16 @@ public class PageController extends Controller {
     	return ok(login.render(""));
     }
     
-    public Result article(){
-    	return ok(article.render(Article.find.all()));
+    public Result showArticle(){
+    	return ok(show_article.render(Article.find.all()));
     }
     
     public Result articleCreate(){
     	return ok(create_article.render());
     }
     
-    public Result demand(){
-    	return ok(demand.render(Demand.find.all()));
+    public Result showDemand(){
+    	return ok(show_demand.render(Demand.find.all()));
     }
 
 }

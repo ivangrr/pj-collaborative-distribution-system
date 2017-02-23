@@ -26,4 +26,7 @@ search.for = Busqueda por
 btn.go = Ir
 table.code = Código
 table.article = Articulo
+table.description = Descriptión
 table.demand = Demanda
+table.see = Ver
+form.article = Articulo

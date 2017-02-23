@@ -112,6 +112,7 @@
                         <tr>
                           <th>@Messages("table.code")</th>
                           <th>@Messages("table.article")</th>
+                          <th>@Messages("table.description")</th>
                           <th></th>
                           <th></th>
                           <th></th>
@@ -122,9 +123,10 @@
                         <tr>
                           <td>@article.code</td>
                           <td>@article.name</td>
-                          <td>Ver</i></td>
-                          <td><i class="fa fa-pencil" aria-hidden="true"></td>
-                          <td><i class="fa fa-times" aria-hidden="true"></i></td>
+                          <td>@article.description</td>
+                          <td>@Messages("table.see")</i></td>
+                          <td class="icon-table"><i class="fa fa-pencil" aria-hidden="true"></td>
+                          <td class="icon-table"><i class="fa fa-times" aria-hidden="true"></i></td>
                         </tr>
 						}
                       </tbody>
