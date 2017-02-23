@@ -21,7 +21,12 @@ public class PageController extends Controller {
     }
     
     public Result articleCreate(){
-    	return ok(create_article.render());
+    	return ok(management_article.render(null));
+    }
+    
+    public Result articleUpdate(Long id){
+    	Article article = Article.find.byId(id);
+    	return ok(management_article.render(article));
     }
     
     public Result showDemand(){

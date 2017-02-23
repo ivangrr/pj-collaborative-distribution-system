@@ -12,9 +12,13 @@ GET     /home						controllers.PageController.home()
 # article page
 GET     /article               		controllers.PageController.showArticle()
 
-# create article
+# management article
 GET     /create-article        		controllers.PageController.articleCreate()
 POST    /create-article       		controllers.Articles.save()
+GET     /update-article/:id    		controllers.PageController.articleUpdate(id: Long)
+
+# delete article
+GET     /delete-article/:id        	controllers.Articles.remove(id: Long)
 
 # demand page
 GET     /demand						controllers.PageController.showDemand()

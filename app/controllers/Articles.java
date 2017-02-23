@@ -18,5 +18,18 @@ public class Articles extends Controller {
 		article.save();		
 		return redirect(routes.PageController.showArticle());
 	}
+	
+	public Result update(Long id) {
+		DynamicForm dynamicForm = DynamicForm.form().bindFromRequest();
+		Article article = new Article(Long.valueOf(dynamicForm.get("code")), dynamicForm.get("code"), dynamicForm.get("name"), dynamicForm.get("description"));
+		article.save();		
+		return redirect(routes.PageController.showArticle());
+	}
+	
+	public Result remove(Long id){
+		Article article = Article.find.ref(id); 
+		article.delete();
+		return redirect(routes.PageController.showArticle());
+	}
 
 }
