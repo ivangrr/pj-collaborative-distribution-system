@@ -14,7 +14,14 @@ public class Articles extends Controller {
 	
 	public Result save() {
 		DynamicForm dynamicForm = DynamicForm.form().bindFromRequest();
-		Article article = new Article(Long.valueOf(dynamicForm.get("code")), dynamicForm.get("code"), dynamicForm.get("name"), dynamicForm.get("description"));
+		Article article = Article.find.byId(Long.valueOf(dynamicForm.get("code")));
+		if(article != null){
+			article.name = dynamicForm.get("name");
+			article.description = dynamicForm.get("description");
+		}
+		else{
+			article = new Article(Long.valueOf(dynamicForm.get("code")), dynamicForm.get("code"), dynamicForm.get("name"), dynamicForm.get("description"));
+		}
 		article.save();		
 		return redirect(routes.PageController.showArticle());
 	}
