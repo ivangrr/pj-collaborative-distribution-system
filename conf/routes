@@ -16,6 +16,7 @@ GET     /article               		controllers.PageController.showArticle()
 GET     /create-article        		controllers.PageController.articleCreate()
 POST    /create-article       		controllers.Articles.save()
 GET     /update-article/:id    		controllers.PageController.articleUpdate(id: Long)
+POST    /update-article       		controllers.Articles.update()
 
 # delete article
 GET     /delete-article/:id        	controllers.Articles.remove(id: Long)
