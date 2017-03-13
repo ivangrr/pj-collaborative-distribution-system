@@ -5,6 +5,10 @@
 # login page
 GET     /                           controllers.PageController.login()
 GET     /login						controllers.PageController.login()
+POST    /       					controllers.PageController.validateLogin()
+
+# logout page
+GET     /logout                     controllers.PageController.logout()
 
 # home page
 GET     /home						controllers.PageController.home()

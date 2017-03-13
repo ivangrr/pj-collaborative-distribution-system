@@ -1,3 +1,4 @@
+/*
 var gulp = require('gulp'),
     concat = require('gulp-concat'),
     uglify = require('gulp-uglify'),
@@ -5,8 +6,14 @@ var gulp = require('gulp'),
     sass = require('gulp-ruby-sass'),
     autoprefixer = require('gulp-autoprefixer'),
     browserSync = require('browser-sync').create();
-
+*/
+var gulp = require('gulp'),
+    concat = require('gulp-concat'),
+    uglify = require('gulp-uglify'),
+    rename = require('gulp-rename'), 
+	less = require("gulp-less");
 var DEST = 'build/';
+//var NOM_FILE = 'new-custom';
 
 gulp.task('scripts', function() {
     return gulp.src([
@@ -18,10 +25,12 @@ gulp.task('scripts', function() {
       .pipe(rename({suffix: '.min'}))
       .pipe(uglify())
       .pipe(gulp.dest(DEST+'/js'))
-      .pipe(browserSync.stream());
+      //.pipe(browserSync.stream())
+	  ;
 });
 
 // TODO: Maybe we can simplify how sass compile the minify and unminify version
+/*
 var compileSASS = function (filename, options) {
   return sass('src/scss/*.scss', options)
         .pipe(autoprefixer('last 2 versions', '> 5%'))
@@ -42,19 +51,36 @@ gulp.task('browser-sync', function() {
     browserSync.init({
         server: {
             baseDir: './'
-        },
-        startPath: './production/index.html'
+        }//,
+        //startPath: './production/index.html'
+		
     });
+});
+*/
+
+gulp.task('compile-less', function () {
+    gulp.src('src/less/*.less') // path to your file
+    .pipe(less())
+    .pipe(gulp.dest(DEST+'/css'))
+	.pipe(rename({suffix: '.min'}))
+    .pipe(uglify())
+    .pipe(gulp.dest(DEST+'/css'));
 });
 
 gulp.task('watch', function() {
   // Watch .html files
-  gulp.watch('production/*.html', browserSync.reload);
+  //gulp.watch('production/*.html', browserSync.reload);
+  
   // Watch .js files
   gulp.watch('src/js/*.js', ['scripts']);
+  
+  // Watch .less files
+  gulp.watch('src/less/*.less', ['compile-less']);
+  
   // Watch .scss files
-  gulp.watch('src/scss/*.scss', ['sass', 'sass-minify']);
+  // gulp.watch('src/scss/*.scss', ['sass', 'sass-minify']);
 });
 
 // Default Task
-gulp.task('default', ['browser-sync', 'watch']);
+gulp.task('default', ['watch']);
+//gulp.task('default', ['browser-sync', 'watch']);

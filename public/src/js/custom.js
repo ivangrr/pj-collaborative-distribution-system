@@ -242,3 +242,21 @@ if (typeof NProgress != 'undefined') {
         NProgress.done();
     });
 }
+
+// Success and Error messages
+$(document).ready(function() {
+	if($('#message-success').val() !== undefined && $('#message-success').val().length !== 0){
+		new PNotify({
+    	    title: $('#message-title').val(),
+    	    text: $('#message-success').val(),
+    	    type: 'success'
+    	});
+    }
+    if($('#message-error').val() !== undefined && $('#message-error').val().length !== 0){
+    	new PNotify({
+    	    title: $('#message-title').val(),
+    	    text: $('#message-error').val(),
+    	    type: 'error'
+    	});
+    }
+});

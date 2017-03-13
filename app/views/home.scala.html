@@ -1,4 +1,4 @@
-@(param: Any)
+@(user: String)
 @import play.api.i18n.Messages;
 
 <!DOCTYPE html>
@@ -12,24 +12,7 @@
 
     <title>@Messages("application.name") | </title>
 
-    <!-- Bootstrap -->
-    <link href=@routes.Assets.versioned("vendors/bootstrap/dist/css/bootstrap.min.css") rel="stylesheet">
-    <!-- Font Awesome -->
-    <link href=@routes.Assets.versioned("vendors/font-awesome/css/font-awesome.min.css") rel="stylesheet">
-    <!-- NProgress -->
-    <link href=@routes.Assets.versioned("vendors/nprogress/nprogress.css") rel="stylesheet">
-    <!-- iCheck -->
-    <link href=@routes.Assets.versioned("vendors/iCheck/skins/flat/green.css") rel="stylesheet">
-	
-    <!-- bootstrap-progressbar -->
-    <link href=@routes.Assets.versioned("vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css") rel="stylesheet">
-    <!-- JQVMap -->
-    <link href=@routes.Assets.versioned("vendors/jqvmap/dist/jqvmap.min.css") rel="stylesheet"/>
-    <!-- bootstrap-daterangepicker -->
-    <link href=@routes.Assets.versioned("vendors/bootstrap-daterangepicker/daterangepicker.css") rel="stylesheet">
-
-    <!-- Custom Theme Style -->
-    <link href=@routes.Assets.versioned("build/css/custom.min.css") rel="stylesheet">
+    @header_css()
   </head>
 
   <body class="nav-md">
@@ -50,7 +33,7 @@
               </div>
               <div class="profile_info">
                 <span>@Messages("welcome"),</span>
-                <h2>John Doe</h2>
+                <h2>@user</h2>
               </div>
             </div>
             <!-- /menu profile quick info -->
@@ -58,12 +41,12 @@
             <br />
 
             <!-- sidebar menu -->
-            @menu.user("")
+            @menu.user()
             <!-- /sidebar menu -->
 
             <!-- /menu footer buttons -->
             <div class="sidebar-footer hidden-small">
-              <a data-toggle="tooltip" data-placement="top" title="@Messages("log.out")" href="login">
+              <a data-toggle="tooltip" data-placement="top" title="@Messages("log.out")" href="logout">
                 <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
               </a>
             </div>
@@ -72,7 +55,7 @@
         </div>
 
         <!-- top navigation -->
-        @navigation.top("")
+        @navigation.top(user)
         <!-- /top navigation -->
 
         <!-- page content -->
@@ -158,62 +141,7 @@
       </div>
     </div>
 
-    <!-- jQuery -->
-    <script src=@routes.Assets.versioned("vendors/jquery/dist/jquery.min.js")></script>
-    <!-- Bootstrap -->
-    <script src=@routes.Assets.versioned("vendors/bootstrap/dist/js/bootstrap.min.js")></script>
-    <!-- FastClick -->
-    <script src=@routes.Assets.versioned("vendors/fastclick/lib/fastclick.js")></script>
-    <!-- NProgress -->
-    <script src=@routes.Assets.versioned("vendors/nprogress/nprogress.js")></script>
-    <!-- Chart.js -->
-    <script src=@routes.Assets.versioned("vendors/Chart.js/dist/Chart.min.js")></script>
-    <!-- gauge.js -->
-    <script src=@routes.Assets.versioned("vendors/gauge.js/dist/gauge.min.js")></script>
-    <!-- bootstrap-progressbar -->
-    <script src=@routes.Assets.versioned("vendors/bootstrap-progressbar/bootstrap-progressbar.min.js")></script>
-    <!-- iCheck -->
-    <script src=@routes.Assets.versioned("vendors/iCheck/icheck.min.js")></script>
-    <!-- Skycons -->
-    <script src=@routes.Assets.versioned("vendors/skycons/skycons.js")></script>
-    <!-- Flot -->
-    <script src=@routes.Assets.versioned("vendors/Flot/jquery.flot.js")></script>
-    <script src=@routes.Assets.versioned("vendors/Flot/jquery.flot.pie.js")></script>
-    <script src=@routes.Assets.versioned("vendors/Flot/jquery.flot.time.js")></script>
-    <script src=@routes.Assets.versioned("vendors/Flot/jquery.flot.stack.js")></script>
-    <script src=@routes.Assets.versioned("vendors/Flot/jquery.flot.resize.js")></script>
-    <!-- Flot plugins -->
-    <script src=@routes.Assets.versioned("vendors/flot.orderbars/js/jquery.flot.orderBars.js")></script>
-    <script src=@routes.Assets.versioned("vendors/flot-spline/js/jquery.flot.spline.min.js")></script>
-    <script src=@routes.Assets.versioned("vendors/flot.curvedlines/curvedLines.js")></script>
-    <!-- DateJS -->
-    <script src=@routes.Assets.versioned("vendors/DateJS/build/date.js")></script>
-    <!-- JQVMap -->
-    <script src=@routes.Assets.versioned("vendors/jqvmap/dist/jquery.vmap.js")></script>
-    <script src=@routes.Assets.versioned("vendors/jqvmap/dist/maps/jquery.vmap.world.js")></script>
-    <script src=@routes.Assets.versioned("vendors/jqvmap/examples/js/jquery.vmap.sampledata.js")></script>
-    <!-- bootstrap-daterangepicker -->
-    <script src=@routes.Assets.versioned("vendors/moment/min/moment.min.js")></script>
-    <script src=@routes.Assets.versioned("vendors/bootstrap-daterangepicker/daterangepicker.js")></script>
-    <!-- Datatables -->
-    <script src=@routes.Assets.versioned("vendors/datatables.net/js/jquery.dataTables.min.js")></script>
-    <script src=@routes.Assets.versioned("vendors/datatables.net-bs/js/dataTables.bootstrap.min.js")></script>
-    <script src=@routes.Assets.versioned("vendors/datatables.net-buttons/js/dataTables.buttons.min.js")></script>
-    <script src=@routes.Assets.versioned("vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js")></script>
-    <script src=@routes.Assets.versioned("vendors/datatables.net-buttons/js/buttons.flash.min.js")></script>
-    <script src=@routes.Assets.versioned("vendors/datatables.net-buttons/js/buttons.html5.min.js")></script>
-    <script src=@routes.Assets.versioned("vendors/datatables.net-buttons/js/buttons.print.min.js")></script>
-    <script src=@routes.Assets.versioned("vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js")></script>
-    <script src=@routes.Assets.versioned("vendors/datatables.net-keytable/js/dataTables.keyTable.min.js")></script>
-    <script src=@routes.Assets.versioned("vendors/datatables.net-responsive/js/dataTables.responsive.min.js")></script>
-    <script src=@routes.Assets.versioned("vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js")></script>
-    <script src=@routes.Assets.versioned("vendors/datatables.net-scroller/js/dataTables.scroller.min.js")></script>
-    <script src=@routes.Assets.versioned("vendors/jszip/dist/jszip.min.js")></script>
-    <script src=@routes.Assets.versioned("vendors/pdfmake/build/pdfmake.min.js")></script>
-    <script src=@routes.Assets.versioned("vendors/pdfmake/build/vfs_fonts.js")></script>
-
-    <!-- Custom Theme Scripts -->
-    <script src=@routes.Assets.versioned("build/js/custom.min.js")></script>
+	@footer_js()
 	
   </body>
 </html>

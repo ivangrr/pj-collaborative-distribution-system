@@ -3,13 +3,26 @@
 # ~~~~
 
 # login page
-GET     /                           controllers.HomeController.login
-GET     /login                           controllers.HomeController.login
-# home page
-GET     /home                       controllers.HomeController.main
+GET     /                           controllers.PageController.login()
+GET     /login						controllers.PageController.login()
 
 # home page
-GET     /demand                       controllers.PageController.demand
+GET     /home						controllers.PageController.home()
+
+# article page
+GET     /article               		controllers.PageController.showArticle()
+
+# management article
+GET     /create-article        		controllers.PageController.articleCreate()
+POST    /create-article       		controllers.Articles.save()
+GET     /update-article/:id    		controllers.PageController.articleUpdate(id: Long)
+POST    /update-article       		controllers.Articles.update()
+
+# delete article
+GET     /delete-article/:id        	controllers.Articles.remove(id: Long)
+
+# demand page
+GET     /demand						controllers.PageController.showDemand()
 
 # An example controller showing how to use dependency injection
 #GET     /count                      controllers.CountController.count
