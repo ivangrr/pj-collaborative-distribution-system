@@ -36,7 +36,7 @@ public class PageController extends Controller {
     	String encripted = AppUtils.getEncrypt(password);
     	if(!user.equalsIgnoreCase(userDefault) && !password.equalsIgnoreCase(passwordDefault)){
     		flash("error", Messages.get("login.error"));
-    		return ok(login.render(""));
+    		return redirect(login.render(""));
     	}
     	session("connected", user);
     	return ok(home.render(user));
